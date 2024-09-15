@@ -1,0 +1,12 @@
+.tableView {
+    max-width: max-content;
+}
+
+.rowStart {
+    display: flex;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
