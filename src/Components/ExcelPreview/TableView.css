@@ -1,9 +1,30 @@
+.preview {
+    display: flex;
+    flex-direction: column;
+}
+
 .tableView {
     max-width: max-content;
 }
 
-.rowStart {
+.tableCell {
+    display: inline;
+    border: solid black 1px;
+    border-left: none;
+    border-bottom: none;
+    padding: 0px 3px 0px 3px;
+    width: 200px;
+}
+
+.tableRow {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.tableRow:last-child .tableCell {
+    border-bottom: solid black 1px;
 }
 
 .stats {

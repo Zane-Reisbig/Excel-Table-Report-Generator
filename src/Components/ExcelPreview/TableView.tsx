@@ -4,6 +4,9 @@ import "./TableView.css";
 
 const TableView = <T,>(props: TableViewProps<T>) => {
     const defaultShownRows = 10;
+    let usedRowAmount = !props.shownRowAmount
+        ? defaultShownRows
+        : props.shownRowAmount;
 
     const colCheck = props.showTheseCols
         ? props.showTheseCols
@@ -18,10 +21,7 @@ const TableView = <T,>(props: TableViewProps<T>) => {
 
     const shownRows = allFoundCols.slice(
         0,
-        Math.min(
-            props.shownRowAmount ? props.shownRowAmount : defaultShownRows,
-            allFoundCols.length
-        )
+        Math.min(usedRowAmount, allFoundCols.length)
     );
 
     return (
@@ -38,15 +38,28 @@ const TableView = <T,>(props: TableViewProps<T>) => {
             </div>
 
             <div className="preview">
-                {shownRows.map((i) => {
-                    return (
-                        <div>
-                            {i.map((item) => {
-                                return <>&nbsp;{String(item)}&nbsp;</>;
-                            })}
-                        </div>
-                    );
-                })}
+                {shownRows.length != 0 ? (
+                    shownRows.map((i) => {
+                        return (
+                            <div className="tableRow">
+                                {i.map((item) => {
+                                    return (
+                                        <div className="tableCell">
+                                            &nbsp;{String(item).toString()}
+                                            &nbsp;
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        );
+                    })
+                ) : (
+                    <div className="tableRow">
+                        {[...Array(colCheck.length)].map(() => {
+                            return <div className="tableCell">No Results</div>;
+                        })}
+                    </div>
+                )}
             </div>
         </div>
     );

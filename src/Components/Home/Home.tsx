@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Preview from "../ExcelPreview/ExcelPreview";
 import ExcelTable from "../ExcelPreview/ExcelFile";
 
 import "./Home.css";
+import FileInput from "../ExcelPreview/ExcelFileInput";
 
 function Home() {
     const [workingTable, setWorkingTable] = useState<ExcelTable>();
@@ -17,9 +17,11 @@ function Home() {
 
     return (
         <div className="Home">
-            <Preview
-                store={(val: ExcelTable) => {
-                    setWorkingTable(val);
+            <FileInput
+                contentStore={(content) => {
+                    setWorkingTable(
+                        new ExcelTable(content.lines, content.headerRow)
+                    );
                 }}
             />
         </div>

@@ -1,5 +1,6 @@
 export interface TableViewProps<T> {
-    source: Array<Array<T>>;
+    source: T[][];
     shownRowAmount?: number;
-    showTheseCols?: Array<number>;
+    showTheseCols?: number[];
+    headerRow?: string[];
 }

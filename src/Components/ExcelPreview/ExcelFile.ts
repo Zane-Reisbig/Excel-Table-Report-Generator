@@ -16,12 +16,12 @@ export default class ExcelTable {
         return this._headerRow;
     }
 
-    private _headers: String[];
+    private _headers: string[];
     get headers() {
         return this._headers;
     }
 
-    private _data: String[][];
+    private _data: string[][];
     get data() {
         return this._data;
     }
@@ -60,7 +60,7 @@ export function filterRows(
         rowContains = [rowContains];
     }
 
-    const includeOption = (source: String, contains: string) => {
+    const includeOption = (source: string, contains: string) => {
         return options.matchWholeWord
             ? source.indexOf(contains) == -1
                 ? false

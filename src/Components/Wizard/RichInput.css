@@ -1,0 +1,19 @@
+.richTextArea {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.filterDisplay {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 85px;
+    min-width: 230px;
+    max-width: 60vw;
+    scrollbar-width: thin;
+
+    border: solid black 1px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}

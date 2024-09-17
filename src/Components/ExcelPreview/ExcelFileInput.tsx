@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { ExcelLines, FileInputProps } from "../../Types/ExcelPreview";
 import readXlsxFile from "read-excel-file";
+
 import onMouseWheel from "../../SharedLib/onMouseWheel";
+
+import { FileInputProps } from "../../Types/FileInput";
+import { ExcelLines } from "../../Types/ExcelPreview";
 
 const FileInput = (props: FileInputProps) => {
     const [file, setFile] = useState<File>(new File([], ""));
@@ -18,7 +21,7 @@ const FileInput = (props: FileInputProps) => {
                     return row.map((val) => {
                         if (val === null) return "";
 
-                        return String(val);
+                        return String(val).toString();
                     });
                 });
             },
@@ -69,7 +72,7 @@ const FileInput = (props: FileInputProps) => {
 
                     <button
                         onClick={() => {
-                            if (lines.length == 0) return;
+                            if (lines.length === 0) return;
 
                             props.contentStore({
                                 lines: lines,
